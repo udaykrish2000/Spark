@@ -630,6 +630,7 @@
         color: #fff;
         position: relative;
         padding: 8px 2px;
+        white-space: nowrap;
         transition: color 0.3s;
       }
       .navbar.is-scrolled .nav__link {
@@ -2179,6 +2180,16 @@
       /* ===========================================================
    RESPONSIVE
 =========================================================== */
+      @media (max-width: 1180px) {
+        .nav,
+        .navbar__actions .btn--sm {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
+
       @media (max-width: 1080px) {
         .card-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -2642,6 +2653,7 @@
               </ul>
             </li>
             <li><a href="#impact" class="nav__link">Our Impact</a></li>
+            <li><a href="#gallery" class="nav__link">Gallery</a></li>
             <li class="nav__item--dropdown">
               <a href="#volunteer" class="nav__link">Get Involved</a>
               <ul class="nav__submenu">               
@@ -2690,6 +2702,7 @@
             </ul>
           </li>
           <li><a href="#impact" class="mobile-nav__link">Our Impact</a></li>
+          <li><a href="#gallery" class="mobile-nav__link">Gallery</a></li>
           <li>
             <a href="#volunteer" class="mobile-nav__link">Get Involved</a>
             <ul class="mobile-nav__sublist">              
