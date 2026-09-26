@@ -595,6 +595,12 @@
         visibility: visible;
         transform: translateY(0);
       }
+      .nav__item--dropdown.is-dismissed .nav__submenu {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateY(8px);
+      }
       .nav__list:has(.nav__item--dropdown:hover)
         .nav__item--dropdown:not(:hover)
         .nav__submenu,
@@ -1316,8 +1322,11 @@
         display: none;
       }
       .masonry__item .ph-image {
+        display: block;
+        width: 100%;
         height: calc(180px * var(--h));
         border-radius: 0;
+        object-fit: cover;
         cursor: pointer;
         transition: transform 0.6s var(--ease);
       }
@@ -1361,6 +1370,9 @@
           opacity 0.35s var(--ease),
           visibility 0.35s var(--ease);
       }
+      .lightbox[hidden] {
+        display: none;
+      }
       .lightbox[data-open] {
         opacity: 1;
         visibility: visible;
@@ -1374,6 +1386,7 @@
         width: 100%;
         height: min(70vh, 520px);
         border-radius: var(--r-lg);
+        object-fit: contain;
       }
       .lightbox__caption {
         color: #fff;
@@ -2276,6 +2289,22 @@
         }
         .t-card {
           padding: 36px 24px;
+        }
+        .lightbox {
+          padding: 20px 12px;
+        }
+        .lightbox__image {
+          height: min(64dvh, 520px);
+        }
+        .lightbox__nav {
+          width: 44px;
+          height: 44px;
+        }
+        .lightbox__nav--prev {
+          left: 10px;
+        }
+        .lightbox__nav--next {
+          right: 10px;
         }
         .donate {
           padding: 100px 0;
@@ -3306,146 +3335,204 @@
           </div>
 
           <div class="masonry" id="masonry">
-            <!-- items injected by helper class names; static markup below -->
             <figure
               class="masonry__item"
               data-category="education"
-              style="--h: 1.3"
+              style="--h: 1.15"
             >
-              <div
-                class="ph-image ph-image--g1"
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.06.50%20AM%20(1).jpeg"
+                alt="Community members seated around a table in conversation"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: classroom learning session"
-              ></div>
-              <figcaption>Classroom learning session</figcaption>
+                aria-label="Open photo: community members in discussion"
+              />
+              <figcaption>Community members in discussion</figcaption>
             </figure>
             <figure
               class="masonry__item"
               data-category="volunteers"
-              style="--h: 1"
+              style="--h: 1.25"
             >
-              <div
-                class="ph-image ph-image--g2"
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.06.54%20AM.jpeg"
+                alt="A mentor speaking with students seated in a circle"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: volunteer teaching workshop"
-              ></div>
-              <figcaption>Volunteer teaching workshop</figcaption>
+                aria-label="Open photo: mentoring and student guidance"
+              />
+              <figcaption>Mentoring and student guidance</figcaption>
+            </figure>
+            <figure
+              class="masonry__item"
+              data-category="education"
+              style="--h: 1.05"
+            >
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.06.59%20AM%20(2).jpeg"
+                alt="Students gathered for a group learning activity"
+                tabindex="0"
+                role="button"
+                aria-label="Open photo: students in a learning session"
+              />
+              <figcaption>Students in a learning session</figcaption>
+            </figure>
+            <figure
+              class="masonry__item"
+              data-category="education"
+              style="--h: 1.25"
+            >
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.04%20AM%20(1).jpeg"
+                alt="Children collaborating during a classroom activity"
+                tabindex="0"
+                role="button"
+                aria-label="Open photo: collaborative classroom activity"
+              />
+              <figcaption>Collaborative classroom activity</figcaption>
+            </figure>
+            <figure
+              class="masonry__item"
+              data-category="education"
+              style="--h: 1.15"
+            >
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.06%20AM.jpeg"
+                alt="Children learning together in a circle on the floor"
+                tabindex="0"
+                role="button"
+                aria-label="Open photo: learning together in a circle"
+              />
+              <figcaption>Learning together in a circle</figcaption>
+            </figure>
+            <figure
+              class="masonry__item"
+              data-category="celebrations"
+              style="--h: 1.15"
+            >
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.09%20AM.jpeg"
+                alt="Children celebrating together outside the community centre"
+                tabindex="0"
+                role="button"
+                aria-label="Open photo: community celebration outdoors"
+              />
+              <figcaption>Community celebration</figcaption>
+            </figure>
+            <figure class="masonry__item" data-category="volunteers" style="--h: 1.2">
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.15%20AM%20(1).jpeg"
+                alt="A facilitator leading an activity with children"
+                tabindex="0"
+                role="button"
+                aria-label="Open photo: facilitated group activity"
+              />
+              <figcaption>Facilitated group activity</figcaption>
             </figure>
             <figure
               class="masonry__item"
               data-category="events"
-              style="--h: 1.5"
+              style="--h: 1.15"
             >
-              <div
-                class="ph-image ph-image--g3"
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.16%20AM%20(1).jpeg"
+                alt="Children taking part in an active group game"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: annual community health camp"
-              ></div>
-              <figcaption>Annual community health camp</figcaption>
+                aria-label="Open photo: learning through games and movement"
+              />
+              <figcaption>Learning through games and movement</figcaption>
             </figure>
-            <figure
-              class="masonry__item"
-              data-category="celebrations"
-              style="--h: 1.1"
-            >
-              <div
-                class="ph-image ph-image--g4"
+            <figure class="masonry__item" data-category="volunteers" style="--h: 1.25">
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.17%20AM%20(1).jpeg"
+                alt="Students and adults gathered together at the learning centre"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: festival celebration with children"
-              ></div>
-              <figcaption>Festival celebration with children</figcaption>
+                aria-label="Open photo: students and mentors at the centre"
+              />
+              <figcaption>Students and mentors at the centre</figcaption>
             </figure>
-            <figure
-              class="masonry__item"
-              data-category="education"
-              style="--h: 1.6"
-            >
-              <div
-                class="ph-image ph-image--g5"
+            <figure class="masonry__item" data-category="education" style="--h: 1.2">
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.18%20AM%20(1).jpeg"
+                alt="Children participating in a lively group activity"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: library reading hour"
-              ></div>
-              <figcaption>Library reading hour</figcaption>
+                aria-label="Open photo: children participating in a group activity"
+              />
+              <figcaption>Children participating in a group activity</figcaption>
             </figure>
-            <figure
-              class="masonry__item"
-              data-category="volunteers"
-              style="--h: 1.2"
-            >
-              <div
-                class="ph-image ph-image--g6"
+            <figure class="masonry__item" data-category="education" style="--h: 1.2">
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.20%20AM%20(2).jpeg"
+                alt="Students sitting together and sharing ideas"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: volunteer orientation day"
-              ></div>
-              <figcaption>Volunteer orientation day</figcaption>
+                aria-label="Open photo: a conversation with students"
+              />
+              <figcaption>A conversation with students</figcaption>
             </figure>
-            <figure class="masonry__item" data-category="events" style="--h: 1">
-              <div
-                class="ph-image ph-image--g7"
+            <figure class="masonry__item" data-category="events" style="--h: 1.15">
+              <img
+                class="ph-image"
+                src="./Images/WhatsApp%20Image%202026-09-23%20at%2010.07.22%20AM.jpeg"
+                alt="Students and community members together at the centre"
                 tabindex="0"
                 role="button"
-                aria-label="Open photo: skill development fair"
-              ></div>
-              <figcaption>Skill development fair</figcaption>
-            </figure>
-            <figure
-              class="masonry__item"
-              data-category="celebrations"
-              style="--h: 1.4"
-            >
-              <div
-                class="ph-image ph-image--g8"
-                tabindex="0"
-                role="button"
-                aria-label="Open photo: graduation day celebration"
-              ></div>
-              <figcaption>Graduation day celebration</figcaption>
+                aria-label="Open photo: students sharing a classroom moment"
+              />
+              <figcaption>Students sharing a classroom moment</figcaption>
             </figure>
           </div>
-        </div>
-
-        <!-- Lightbox -->
-        <div
-          class="lightbox"
-          id="lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Photo viewer"
-          hidden
-        >
-          <button
-            class="lightbox__close"
-            id="lightbox-close"
-            aria-label="Close photo viewer"
-          >
-            &times;
-          </button>
-          <button
-            class="lightbox__nav lightbox__nav--prev"
-            id="lightbox-prev"
-            aria-label="Previous photo"
-          >
-            &#10094;
-          </button>
-          <div class="lightbox__stage">
-            <div class="ph-image lightbox__image" id="lightbox-image"></div>
-            <p class="lightbox__caption" id="lightbox-caption"></p>
-          </div>
-          <button
-            class="lightbox__nav lightbox__nav--next"
-            id="lightbox-next"
-            aria-label="Next photo"
-          >
-            &#10095;
-          </button>
         </div>
       </section>
+
+      <div
+        class="lightbox"
+        id="lightbox"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Photo viewer"
+        hidden
+      >
+        <button
+          class="lightbox__close"
+          id="lightbox-close"
+          aria-label="Close photo viewer"
+        >
+          &times;
+        </button>
+        <button
+          class="lightbox__nav lightbox__nav--prev"
+          id="lightbox-prev"
+          aria-label="Previous photo"
+        >
+          &#10094;
+        </button>
+        <div class="lightbox__stage">
+          <img class="lightbox__image" id="lightbox-image" alt="" />
+          <p class="lightbox__caption" id="lightbox-caption"></p>
+        </div>
+        <button
+          class="lightbox__nav lightbox__nav--next"
+          id="lightbox-next"
+          aria-label="Next photo"
+        >
+          &#10095;
+        </button>
+      </div>
 
       <!-- ============ TESTIMONIALS ============ -->
       <!-- <section class="testimonials" id="testimonials">
@@ -3991,6 +4078,17 @@
 
         /* ---------- Smooth scrolling for anchor links ---------- */
         function smoothScroll() {
+          document.querySelectorAll(".nav__item--dropdown").forEach(function (dropdown) {
+            var trigger = dropdown.querySelector(":scope > .nav__link");
+            if (!trigger) return;
+            trigger.addEventListener("pointerenter", function () {
+              dropdown.classList.remove("is-dismissed");
+            });
+            trigger.addEventListener("focus", function () {
+              dropdown.classList.remove("is-dismissed");
+            });
+          });
+
           document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
             anchor.addEventListener("click", function (e) {
               var targetId = this.getAttribute("href");
@@ -3999,6 +4097,10 @@
               if (!target) return;
               var scrollTarget = target.closest("section") || target;
               e.preventDefault();
+              var dropdown = this.closest(".nav__item--dropdown");
+              if (dropdown && this.classList.contains("nav__sublink")) {
+                dropdown.classList.add("is-dismissed");
+              }
               var navH = document.getElementById("navbar").offsetHeight;
               var top =
                 scrollTarget.getBoundingClientRect().top +
@@ -4131,6 +4233,7 @@
           );
           var currentIndex = 0;
           var lastFocused = null;
+          var closeTimer = null;
 
           function getVisibleItems() {
             return items.filter(function (item) {
@@ -4141,18 +4244,20 @@
           function openAt(index) {
             var visible = getVisibleItems();
             if (!visible.length) return;
+            if (closeTimer) {
+              clearTimeout(closeTimer);
+              closeTimer = null;
+            }
             currentIndex = (index + visible.length) % visible.length;
             var item = visible[currentIndex];
             var imgEl = item.querySelector(".ph-image");
             var caption = item.querySelector("figcaption");
 
-            lbImage.className = "ph-image lightbox__image";
-            imgEl.classList.forEach(function (cls) {
-              if (cls.indexOf("ph-image--") === 0) lbImage.classList.add(cls);
-            });
+            lbImage.src = imgEl.src;
+            lbImage.alt = imgEl.alt;
             lbCaption.textContent = caption ? caption.textContent : "";
 
-            lastFocused = document.activeElement;
+            if (lb.hidden) lastFocused = document.activeElement;
             lb.hidden = false;
             requestAnimationFrame(function () {
               lb.setAttribute("data-open", "");
@@ -4162,10 +4267,12 @@
           }
 
           function close() {
+            if (lb.hidden || !lb.hasAttribute("data-open")) return;
             lb.removeAttribute("data-open");
             document.body.style.overflow = "";
-            setTimeout(function () {
+            closeTimer = setTimeout(function () {
               lb.hidden = true;
+              closeTimer = null;
             }, 350);
             if (lastFocused) lastFocused.focus();
           }
@@ -4201,7 +4308,7 @@
           });
 
           document.addEventListener("keydown", function (e) {
-            if (lb.hidden) return;
+            if (lb.hidden || !lb.hasAttribute("data-open")) return;
             if (e.key === "Escape") close();
             if (e.key === "ArrowRight") next();
             if (e.key === "ArrowLeft") prev();
