@@ -1542,6 +1542,11 @@
       .donation-modal__panel {
         position: relative;
         width: min(760px, 100%);
+        max-height: calc(100vh - 48px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
         background: #fff;
         border-radius: 24px;
         padding: 30px 28px 24px;
@@ -1633,9 +1638,33 @@
         display: block;
         font-size: 1.08rem;
       }
-      @media (max-width: 640px) {
+      .donation-modal__upi-btn {
+        display: none;
+      }
+
+      @media (max-width: 1024px) {
         .donation-modal__grid {
           grid-template-columns: 1fr;
+        }
+
+        .donation-modal__upi-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 18px;
+          padding: 14px 20px;
+          border-radius: 12px;
+          background: var(--grad-brand);
+          color: #fff;
+          font-weight: 800;
+          text-decoration: none;
+          box-shadow: var(--shadow-md);
+          transition: transform 0.2s var(--ease), opacity 0.2s var(--ease);
+        }
+
+        .donation-modal__upi-btn:active {
+          transform: scale(0.98);
         }
       }
 
@@ -3105,6 +3134,15 @@
               </div>
             </div>
           </div>
+
+          <a
+            class="donation-modal__upi-btn"
+            id="donation-upi-btn"
+            href="upi://pay?pa=MAB.037326008280010%40AXISBANK&pn=SPARK%20SOCIAL%20EDUCATION%20AND%20WELFARE%20SOCIETY&am=100&cu=INR"
+            aria-label="Pay donation using UPI"
+          >
+            Pay Now
+          </a>
         </div>
       </div>
 
