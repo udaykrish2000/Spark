@@ -1525,6 +1525,8 @@
         display: grid;
         place-items: center;
         padding: 24px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
         background: rgba(20, 18, 16, 0.68);
         opacity: 0;
         visibility: hidden;
@@ -1542,6 +1544,12 @@
       .donation-modal__panel {
         position: relative;
         width: min(760px, 100%);
+        max-height: calc(100vh - 48px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
         background: #fff;
         border-radius: 24px;
         padding: 30px 28px 24px;
@@ -1633,6 +1641,16 @@
         display: block;
         font-size: 1.08rem;
       }
+      @media (max-width: 1024px) {
+        .donation-modal {
+          padding: 12px;
+        }
+
+        .donation-modal__panel {
+          max-height: calc(100vh - 24px);
+        }
+      }
+
       @media (max-width: 640px) {
         .donation-modal__grid {
           grid-template-columns: 1fr;
