@@ -1522,10 +1522,11 @@
         position: fixed;
         inset: 0;
         z-index: 2100;
-        display: grid;
-        place-items: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         padding: 24px;
-        overflow-y: auto;
+        overflow: hidden;
         overscroll-behavior: contain;
         background: rgba(20, 18, 16, 0.68);
         opacity: 0;
@@ -1544,7 +1545,7 @@
       .donation-modal__panel {
         position: relative;
         width: min(760px, 100%);
-        max-height: calc(100vh - 48px);
+        max-height: calc(100dvh - 48px);
         overflow-y: auto;
         overflow-x: hidden;
         overscroll-behavior: contain;
@@ -1647,13 +1648,39 @@
         }
 
         .donation-modal__panel {
-          max-height: calc(100vh - 24px);
+          width: min(560px, 100%);
+          max-height: calc(100dvh - 24px);
+          padding: 24px 18px 20px;
+          border-radius: 20px;
         }
       }
 
       @media (max-width: 640px) {
+        .donation-modal {
+          padding: 8px;
+        }
+
+        .donation-modal__panel {
+          max-height: calc(100dvh - 16px);
+          padding: 22px 14px 18px;
+          border-radius: 18px;
+        }
+
+        .donation-modal__header {
+          margin-bottom: 16px;
+        }
+
         .donation-modal__grid {
           grid-template-columns: 1fr;
+          gap: 14px;
+        }
+
+        .donation-modal__card {
+          padding: 16px;
+        }
+
+        .donation-modal__qr {
+          width: min(100%, 190px);
         }
       }
 
@@ -2398,6 +2425,23 @@
         }
       }
     
+.donation-modal__or {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0 0;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #777;
+}
+
+@media (max-width: 1024px) {
+  .donation-modal__or {
+    display: flex;
+  }
+}
+
 .donation-modal__upi-btn {
   display: none;
 }
@@ -3129,6 +3173,7 @@
             <div class="donation-modal__card">
               <h3>Scan QR Code</h3>
               <div class="donation-modal__qr" aria-label="Donation QR code"></div>
+              <div class="donation-modal__or" aria-hidden="true">OR</div>
               <a class="donation-modal__upi-btn" href="upi://pay?pa=MAB.037326008280010%40AXISBANK&pn=SPARK%20SOCIAL%20EDUCATION%20AND%20WELFARE%20SOCIETY&cu=INR">Pay Now</a>
               <div class="donation-modal__label">SPARK SOCIAL EDUCATION AND WELFARE SOCIETY</div>
             </div>
